@@ -1,0 +1,74 @@
+Panduan Publikasi (Deployment) Website Lampu Makmur POS
+Berikut adalah langkah-langkah umum untuk mempublish (deploy) aplikasi Laravel ini ke internet agar bisa diakses secara online.
+
+Pilihan Server
+Untuk aplikasi Laravel, sangat disarankan menggunakan VPS (Virtual Private Server) atau Cloud Hosting yang mendukung SSH access, karena kita butuh menjalankan command database dan composer.
+
+Rekomendasi: DigitalOcean, Vultr, AWS, atau layanan hosting lokal seperti Niagahoster/Domainesia (paket Cloud/VPS).
+Langkah-langkah Deployment
+1. Persiapan Server
+Pastikan server Anda sudah terinstall:
+
+PHP 8.2+
+MySQL / MariaDB
+Nginx / Apache
+Composer
+Node.js & NPM
+2. Upload Kode
+Anda bisa mengupload kode dengan cara:
+
+Git (Disarankan): Push kode Anda ke GitHub/GitLab, lalu git clone di server.
+SFTP: Upload file manual menggunakan FileZilla (kecuali folder vendor dan node_modules).
+3. Instalasi Dependensi (Di Server)
+Masuk ke folder proyek di terminal server, lalu jalankan:
+
+# Install library PHP
+composer install --optimize-autoloader --no-dev
+# Copy environment file
+cp .env.example .env
+# Generate Key
+php artisan key:generate
+4. Konfigurasi Database (.env)
+Edit file .env di server (gunakan nano .env) dan sesuaikan:
+
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://domain-anda.com
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database_server
+DB_USERNAME=user_database_server
+DB_PASSWORD=password_database_server
+5. Setup Database & Storage
+Jalankan command berikut untuk membuat tabel dan link storage gambar:
+
+# Migrasi Database
+php artisan migrate --force
+# Seed Data Awal (Admin Default) - Jalankan sekali saja
+php artisan db:seed --class=UserSeeder
+# Link Storage Gambar
+php artisan storage:link
+6. Build Frontend Assets
+Karena kita menggunakan Tailwind CSS, kita perlu membuild asset untuk production:
+
+npm install
+npm run build
+7. Pengaturan Web Server (Nginx)
+Arahkan root folder domain Anda ke folder /public dari proyek Laravel. Contoh config block Nginx:
+
+server {
+    listen 80;
+    server_name domain-anda.com;
+    root /var/www/kasir-lampu/public;
+    index index.php index.html;
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+    }
+}
+Alternatif Mudah: Laravel Forge / Ploi.io
+Jika langkah manual di atas terlalu rumit, Anda bisa menggunakan layanan seperti Laravel Forge atau Ploi.io. Layanan ini akan mengurus semua konfigurasi server secara otomatis, Anda hanya perlu menghubungkan akun DigitalOcean dan repository GitHub Anda.
