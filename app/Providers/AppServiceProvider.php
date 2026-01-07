@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL; // Baris ini sangat penting!
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Jika website dijalankan di server (bukan di laptop/local), 
+        // paksa semua link CSS dan JS menggunakan HTTPS.
+        if (config('app.env') !== 'local') {
+            URL::forceScheme('https');
+        }
     }
 }
