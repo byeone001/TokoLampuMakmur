@@ -9,6 +9,11 @@ use App\Livewire\AdminReports;
 use App\Http\Middleware\IsAdmin;
 use App\Livewire\Auth\ForgotPassword;
 
+// Landing Page (Guest Only)
+Route::get('/', function () {
+    return view('pages.landing');
+})->name('home')->middleware('guest');
+
 Route::get('/login', Login::class)->name('login')->middleware('guest');
 Route::get('/register', App\Livewire\Auth\Register::class)->middleware('guest');
 Route::get('/forgot-password', ForgotPassword::class)->name('password.request')->middleware('guest');
@@ -21,9 +26,9 @@ Route::get('/logout', function () {
 })->name('logout');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         return redirect('/pos');
-    });
+    })->name('dashboard');
 
     Route::get('/pos', PosComponent::class);
     Route::get('/profile', App\Livewire\UserProfile::class);

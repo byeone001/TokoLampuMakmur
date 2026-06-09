@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'Lampu Makmur POS' }}</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('img/macmur-listrik.png') }}" />
+    <title>{{ $title ?? 'Macmur Listrik' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -12,9 +13,9 @@
     <div class="min-h-screen">
         <!-- Navigation -->
         @auth
-            <nav class="bg-blue-600 p-4 text-white shadow-md">
+            <nav class="bg-slate-900 p-4 text-white shadow-md">
                 <div class="container mx-auto flex justify-between items-center">
-                    <a href="/" class="text-xl font-bold">Lampu Makmur POS</a>
+                    <img src="{{ asset('img/macmur-listrik.png') }}" alt="Macmur Listrik" class="w-10 h-10">
                     <div class="flex items-center gap-4">
                         @if(auth()->user()->role === 'admin')
                             <a href="/admin/products" class="px-3 hover:underline">Admin</a>

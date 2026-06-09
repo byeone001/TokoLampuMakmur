@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="#fbbf24" opacity="0.1" stroke="#1e293b" stroke-width="2"/>
+  
+  <!-- Bulb Outline -->
+  <g>
+    <!-- Bulb Glass -->
+    <path d="M 85 80 Q 85 50 100 45 Q 115 50 115 80 Q 115 95 110 105 L 90 105 Q 85 95 85 80 Z" 
+          fill="none" stroke="#1e293b" stroke-width="3" stroke-linejoin="round"/>
+    
+    <!-- Filament -->
+    <path d="M 95 65 Q 97 70 100 65 Q 103 70 105 65" 
+          fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- Glow inside bulb -->
+    <circle cx="100" cy="80" r="12" fill="#fbbf24" opacity="0.6"/>
+    
+    <!-- Base -->
+    <rect x="92" y="105" width="16" height="12" fill="#1e293b" rx="2"/>
+    
+    <!-- Threads -->
+    <rect x="89" y="117" width="22" height="3" fill="#1e293b" rx="1"/>
+    <rect x="89" y="122" width="22" height="3" fill="#1e293b" rx="1"/>
+    <rect x="89" y="127" width="22" height="3" fill="#1e293b" rx="1"/>
+  </g>
+  
+  <!-- Lightning Bolts for Energy -->
+  <g>
+    <!-- Left lightning -->
+    <path d="M 65 95 L 72 85 L 68 85 L 78 70" 
+          fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Right lightning -->
+    <path d="M 135 95 L 128 85 L 132 85 L 122 70" 
+          fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Sparkles -->
+  <g fill="#f59e0b">
+    <circle cx="50" cy="50" r="2"/>
+    <circle cx="150" cy="60" r="2"/>
+    <circle cx="60" cy="130" r="2"/>
+    <circle cx="140" cy="140" r="2"/>
+    
+    <!-- Small crosses for sparkle effect -->
+    <line x1="50" y1="40" x2="50" y2="50" stroke="#f59e0b" stroke-width="1.5"/>
+    <line x1="45" y1="45" x2="55" y2="45" stroke="#f59e0b" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Text below -->
+  <text x="100" y="170" font-family="Arial, sans-serif" font-size="18" font-weight="bold" 
+        text-anchor="middle" fill="#1e293b">MACMUR</text>
+  <text x="100" y="188" font-family="Arial, sans-serif" font-size="12" 
+        text-anchor="middle" fill="#f59e0b" letter-spacing="2">LISTRIK</text>
+</svg>
