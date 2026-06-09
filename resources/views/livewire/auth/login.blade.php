@@ -23,6 +23,7 @@
                     class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Masuk
                 </button>
+                <a href="/forgot-password" class="text-blue-500 text-sm hover:underline">Lupa password?</a>
                 <a href="/register" class="text-blue-500 text-sm hover:underline">Daftar Akun Kasir Baru</a>
             </div>
         </form>

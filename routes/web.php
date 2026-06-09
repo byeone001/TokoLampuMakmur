@@ -7,9 +7,11 @@ use App\Livewire\PosComponent;
 use App\Livewire\Auth\Login;
 use App\Livewire\AdminReports;
 use App\Http\Middleware\IsAdmin;
+use App\Livewire\Auth\ForgotPassword;
 
 Route::get('/login', Login::class)->name('login')->middleware('guest');
 Route::get('/register', App\Livewire\Auth\Register::class)->middleware('guest');
+Route::get('/forgot-password', ForgotPassword::class)->name('password.request')->middleware('guest');
 
 Route::get('/logout', function () {
     Auth::logout();

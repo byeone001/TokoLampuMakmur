@@ -93,6 +93,10 @@
                                 <td class="px-3 py-2 whitespace-nowrap text-sm text-center">
                                     <button wire:click="edit({{ $emp->id }})"
                                         class="text-indigo-600 hover:text-indigo-900 mr-2">Edit</button>
+                                    <button wire:click="resetPassword({{ $emp->id }})"
+                                        class="text-amber-600 hover:text-amber-900 mr-2"
+                                        onclick="confirm('Reset password karyawan ini ke password default?') || event.stopImmediatePropagation()">Reset
+                                        Pw</button>
                                     <button wire:click="delete({{ $emp->id }})" class="text-red-600 hover:text-red-900"
                                         onclick="confirm('Yakin ingin menghapus karyawan ini?') || event.stopImmediatePropagation()">Hapus</button>
                                 </td>

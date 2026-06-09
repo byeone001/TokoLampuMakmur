@@ -19,7 +19,7 @@ class AdminEmployee extends Component
             ->withCount('transactions')
             ->withSum('transactions', 'total_price')
             ->get();
-            
+
         return view('livewire.admin-employee');
     }
 
@@ -87,6 +87,18 @@ class AdminEmployee extends Component
 
         session()->flash('message', 'Data karyawan berhasil diperbarui.');
         $this->resetFields();
+    }
+
+    public function resetPassword($id)
+    {
+        $user = User::findOrFail($id);
+        $defaultPassword = 'LampuMakmur123!';
+
+        $user->update([
+            'password' => Hash::make($defaultPassword),
+        ]);
+
+        session()->flash('message', 'Password karyawan berhasil direset ke default: ' . $defaultPassword);
     }
 
     public function delete($id)

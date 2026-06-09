@@ -1,0 +1,8 @@
+user admin123
+pw: 123
+
+user: Halim
+pw: halim123
+
+user: kasir1
+pw: kasir123
